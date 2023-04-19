@@ -1,43 +1,26 @@
-import java.time.LocalDateTime; // Вывод даты и времени системного
+package lesson_1.old_group;
+
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Random;
-import java.util.Scanner; // запрос от пользователя данных
+import java.util.Scanner;
 
 public class S_1 {
-    // точка входа public static void main(String[] args) вся эта конструкция называется СИГНАТУРА
-    // среда поняла что из этого можно собрать класс появились зеленые треугольники справа
-    // public значит что метод main виден снаружи нашего класса S_1
-    // static гарантирует что main моно вызывать не создавая элемент на базе класса, то есть просто поставить точку
-    // после класса S_1 и вызвать main -> S_1.main
-    // обязательно нужно указывать что возвращает функция(метод) как в C#, void не возвращает
-    // ну в общем метод по итогу принимает в себя массив строк args это название
-    public static void main(String[] args) {
-        // println - вывод на экран
-        //System это библиотека, out это ее внутренняя функция
-        //System.out.println("Hello world");
-        //print - для всех видов объектов!!
-        //printf - для вывода красивой строки(через "," выводить объекты)
-        //println - сразу с переносом строки так же может выводить массивы
-        //быстрое написание (sout)!!!!!!!!!!!!!!!
 
+    public static void main(String[] args) {
 
         // Вывод даты и времени системного (now - текущая)
         LocalDateTime time = LocalDateTime.now();
         System.out.println(time);
 
-        //String - не примитивный тип как int и тд. Это класс, поэтому с большой буквы
         String encoding = System.getProperty("console.encoding", "cp866");
 
-        // запрос от пользователя данных не забыть импортировать сканер
-        // in - ввод
         Scanner iScanner = new Scanner(System.in);
-        // как в шарпе отображаем на экране
         System.out.print("Введите имя ");
-        // хуярим переменную и вызываем сканер
         String name = iScanner.nextLine();
         System.out.println(name);
-        // сканер закрыт и больше к нему не обратиться
         iScanner.close();
+
         greetings(name);
     }
 

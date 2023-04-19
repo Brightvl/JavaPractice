@@ -1,6 +1,11 @@
+package lesson_1.old_group;
+
 import java.util.Scanner;
 
 public class HW_1 {
+
+
+    public static Scanner iScanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         System.out.print("""
@@ -10,7 +15,7 @@ public class HW_1 {
                 3. Реализовать простой калькулятор
                 4. Решение уравнения типа 2? + ?5 = 6?
                 Введите нужное задание ->\s""");
-        Scanner iScanner = new Scanner(System.in);
+
         String choose = iScanner.nextLine();
         switch (choose) {
             case "1" -> FactorialILICHTOTUTHZVASHE();
@@ -25,7 +30,8 @@ public class HW_1 {
     // #1. Вычислить n-ое треугольного число (сумма чисел от 1 до n), n! (произведение чисел от 1 до n)
     // И ЧЕ ЭТО ЗА ЗАДАНИЕ ВООБЩЕ, короче я понял что тут факториал нужно искать.
     public static void FactorialILICHTOTUTHZVASHE() {
-        int n = 5;
+        System.out.println("Введите число для преобразования ->");
+        int n = Integer.parseInt(iScanner.nextLine());
         int triangularNumber = 0;
         int factorial = 1;
         for (int i = 1; i <= n; i++) {
@@ -62,7 +68,6 @@ public class HW_1 {
                 Деление -> a / b = c
                 Возведение в степень -> a^b = c""");
         System.out.print("\nВведите выражение -> ");
-        Scanner iScanner = new Scanner(System.in);
         String example = iScanner.nextLine();
         String answer = "Проверьте правильность ввода";
 
@@ -70,8 +75,7 @@ public class HW_1 {
             /*Символ \\D является сокращением для символьного класса [^0-9], который соответствует любому символу,
             кроме цифр от 0 до 9. Символ + означает один или несколько повторений предыдущего символа или группы*/
             String[] result = example.split("\\D+"); // извлекаю из строки числа и записываю в массив
-            answer = String.valueOf((Integer.parseInt(result[0]) + Integer.parseInt(result[1]))); //
-            // суммирую число,
+            answer = String.valueOf((Integer.parseInt(result[0]) + Integer.parseInt(result[1]))); // суммирую число,
         } else if (example.contains("-")) {
             String[] result = example.split("\\D+");
             answer = String.valueOf((Integer.parseInt(result[0]) - Integer.parseInt(result[1])));
