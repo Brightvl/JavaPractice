@@ -22,7 +22,9 @@ public class HW_1 {
             case "2" -> PrimeNumbers();
             case "3" -> MiniCalculator();
             case "4" -> RestoreEquation();
+            default -> System.out.println("пока пока чел");
         }
+        iScanner.close();
 
 
     }
