@@ -7,7 +7,7 @@ public class Vector {
     double y;
     double z;
 
-    //с помощью alt+insert condtructor чтобы красиво выводить для того чтобы не писать одно и тое в MAin
+    //с помощью alt+insert condtructor чтобы красиво выводить для того чтобы не писать одно и тоже в MAin
     public Vector(double x, double y, double z) {
         this.x = x;
         this.y = y;
