@@ -13,7 +13,7 @@ public class FunctionNewObject {
      *
      * @param productList принимается лист с типами данных Product
      */
-    public static Product SearchMaximumPrice(ArrayList<Product> productList) {
+    public static Product searchMaximumPrice(ArrayList<Product> productList) {
         double maxPrice = 0;
         int resultPrise = 0;
         for (int i = 0; i < productList.size(); i++) {
@@ -36,7 +36,7 @@ public class FunctionNewObject {
      * @param variety     принимает сорт товара
      * @return Возвращает список найденных товаров соответсвующий фильтру
      */
-    public static ArrayList<Product> SearchMinimumPrice(ArrayList<Product> productList, int variety) {
+    public static ArrayList<Product> searchMinimumPrice(ArrayList<Product> productList, int variety) {
         ArrayList<Product> newProductList = new ArrayList<>();
         double minPrice = Double.MAX_VALUE;
         for (Product element : productList) {
@@ -59,7 +59,7 @@ public class FunctionNewObject {
      * @param booksList принимает список с данными о книгах
      * @return возвращает список с типом Book
      */
-    public static ArrayList<Book> BooksFilter(ArrayList<Book> booksList) {
+    public static ArrayList<Book> booksFilter(ArrayList<Book> booksList) {
         ArrayList<Book> newBooksList = new ArrayList<>();
         for (Book element : booksList) {
             if (IsPrimeNumber(element.numberPages) && element.surname.contains("А") && element.yearPublication > 2010) {
@@ -71,9 +71,10 @@ public class FunctionNewObject {
 
     /**
      * Task_4. Задан целочисленный список ArrayList. Найти минимальное, максимальное и среднее из этого списка.
+     *
      * @param productList данные списка товаров(использовал вес)
      */
-    public static void MinMaxAverageInList(ArrayList<Product> productList) {
+    public static void minMaxAverageInList(ArrayList<Product> productList) {
         int maxValue = Integer.MIN_VALUE;
         int minValue = Integer.MAX_VALUE;
         double difference1 = Double.MAX_VALUE;
@@ -98,6 +99,66 @@ public class FunctionNewObject {
         System.out.println("Среднее число из списка -> " + averageNum);
         System.out.println("Максимальное значение -> " + maxValue);
     }
+
+    /**
+     * 5*) при входном массиве, вернуть массив массивов со всеми перестановками его элементов. (со звездочкой)
+     * Пример входных данных:
+     * [1,2,3]
+     * Пример выходных данных
+     * [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+     *
+
+     * @param nums принимает массив целых чисел
+     * @return список списков с целыми числами
+     */
+    public static ArrayList<ArrayList<Integer>> enumerationNumbersArray(int[] nums) {
+        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+        recursiveFill(nums, 0, result);
+        return result;
+    }
+
+    /**
+     * Рекурсивная функция для генерации всех перестановок. Внутри перебираем все элементы массива и меняем их местами
+     * @param nums массив с целыми числами
+     * @param start для точки перестановок. Если start больше или равен длине массива, добавляем текущую перестановку в
+     *             результат
+     * @param result после всех процедур итоговый список списков
+     */
+    private static void recursiveFill(int[] nums, int start, ArrayList<ArrayList<Integer>> result) {
+
+        if (start >= nums.length) {
+            ArrayList<Integer> item = convertArrayToList(nums);
+            result.add(item);
+        }
+        for (int j = start; j <= nums.length - 1; j++) {
+            swap(nums, start, j);
+            recursiveFill(nums, start + 1, result);
+            swap(nums, start, j);
+        }
+    }
+
+    /**
+     * Функция для преобразования массива в ArrayList
+     * @param num принимает массив чисел
+     * @return ArrayList<Integer>
+     */
+    private static ArrayList<Integer> convertArrayToList(int[] num) {
+        ArrayList<Integer> item = new ArrayList<>();
+        for (int h : num) {
+            item.add(h);
+        }
+        return item;
+    }
+
+    /**
+     * Функция для обмена элементов массива
+     */
+    private static void swap(int[] a, int i, int j) {
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    }
+
 
 
 }

@@ -2,6 +2,7 @@ package lesson_3.hw_3;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import static lesson_3.hw_3.FunctionNewObject.*;
@@ -43,21 +44,25 @@ public class Main {
 
         switch (choice) {
             case "1" -> {
-                Product findProduct = SearchMaximumPrice(listProduct);
+                Product findProduct = searchMaximumPrice(listProduct);
                 System.out.println("Наибольшая цена у товара: " + findProduct);
             }
             case "2" -> {
                 int targetSort = 1;
-                for (Product element : SearchMinimumPrice(listProduct, targetSort)) {
+                for (Product element : searchMinimumPrice(listProduct, targetSort)) {
                     System.out.printf("цена %.2f наименование %s\n", element.price, element.name);
                 }
             }
-            case "3" -> {
-                System.out.println(BooksFilter(listBook));
+            case "3" -> System.out.println(booksFilter(listBook));
+            case "4" -> minMaxAverageInList(listProduct);
+            case "5" -> {
+                int[] numbers = {1, 2, 3, 5};
+                ArrayList<ArrayList<Integer>> result = enumerationNumbersArray(numbers);
+                for (ArrayList<Integer> list : result) {
+                    System.out.println(Arrays.toString(list.toArray()));
+                }
             }
-            case "4" -> {
-                MinMaxAverageInList(listProduct);
-            }
+            default -> System.out.println("Вы ввели неверное значение.");
         }
     }
 
