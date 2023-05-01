@@ -1,6 +1,10 @@
 package lesson_3.hw_3;
 
 
+import java.util.ArrayList;
+
+import static lesson_3.hw_3.FunctionNewObject.searchMaximumPrice;
+
 /**
  * Класс может принимать массив с информацией о продуктах и отдельную информацию о них.
  */
