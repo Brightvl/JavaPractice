@@ -1,10 +1,5 @@
 package lesson_6;
 
-import lesson_6.goods.Laptop;
-
-import java.util.HashSet;
-import java.util.Set;
-
 import static lesson_6.goods.LaptopSet.laptopSet;
 import static lesson_6.tools.filter.Filter.addFilter;
 

@@ -47,6 +47,7 @@ public class FilterBrand {
 
         } else {
             brandSelected = false;
+            brandName = "";
             allSetBrands.clear();
             setBrands.clear();
         }

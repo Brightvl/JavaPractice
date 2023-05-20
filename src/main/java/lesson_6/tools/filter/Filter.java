@@ -5,8 +5,9 @@ import lesson_6.goods.Laptop;
 import java.util.*;
 
 import static lesson_6.tools.filter.FilterInfo.infoFilterLaptop;
-import static lesson_6.tools.filter.category.FilterBrand.switchingBrandsSelected;
+import static lesson_6.tools.filter.category.FilterBrand.*;
 import static lesson_6.tools.filter.category.FilterOperatingSystem.*;
+import static lesson_6.tools.filter.category.FilterReleaseYear.*;
 
 
 public class Filter {
@@ -30,11 +31,12 @@ public class Filter {
                     switchingBrandsSelected(laptopSet);
                 }
                 case "2" -> {
+                    switchingYearSelected(laptopSet);
 
                 }
                 //Фильтр по операционке
                 case "3" -> {
-                    switchingOsSelected(laptopSet); // применяем фильтр
+                    switchingOsSelected(laptopSet);
                 }
                 case "4" -> {
 
@@ -53,11 +55,44 @@ public class Filter {
 
     public static void addFilter(Set<Laptop> laptopSet) {
         selectFilter(laptopSet);
+        showSelectedFilterValues(laptopSet);
 
 
     }
 
-    private static void ShowSelectedFilterValues() {
+    private static void showSelectedFilterValues(Set<Laptop> laptopSet) {
+        Set<Laptop> result = new HashSet<>();
+        if (brandSelected) {
+            for (Laptop laptop : laptopSet
+            ) {
+                if (laptop.getBrand().equalsIgnoreCase(brandName)) {
+                    result.add(laptop);
+                }
+            }
+        }
+        if (releaseYearSelected) {
+            for (Laptop laptop : laptopSet
+            ) {
+                if (laptop.getReleaseYear().equalsIgnoreCase(releaseYear)) {
+                    result.add(laptop);
+                }
+            }
+        }
+        if (osSelected) {
+            for (Laptop laptop : laptopSet
+            ) {
+                if (laptop.getOperatingSystem().equalsIgnoreCase(osName)) {
+                    result.add(laptop);
+                }
+            }
+        }
+
+        int i = 1;
+        for (Laptop out : result
+        ) {
+            System.out.println(i++ +". " + out);
+        }
+
 
     }
 }

@@ -7,17 +7,18 @@ public class Laptop {
      */
     private final String TYPE = "Laptop";
     private String brand;
-    private int releaseYear;
+    private String model;
+    private String releaseYear;
     private String operatingSystem;
 
     /**
      * Additionally info
      */
     private String keyboardLayout;
-    private double screenDiagonal;
+    private String screenDiagonal;
     private String screenResolution;
-    private int ram;
-    private int storage;
+    private String ram;
+    private String storage;
     private String color;
 
 
@@ -28,13 +29,19 @@ public class Laptop {
     }
 
 
-    public Laptop(String model, int releaseYear, double screenDiagonal,String operatingSystem) {
+    public Laptop(String model, String releaseYear, String screenDiagonal, String operatingSystem) {
         this.brand = model;
         this.releaseYear = releaseYear;
         this.screenDiagonal = screenDiagonal;
         this.operatingSystem = operatingSystem;
     }
 
+    public Laptop(String brand, String model, String releaseYear) {
+        this.brand = brand;
+        this.model = model;
+        this.releaseYear = releaseYear;
+        this.operatingSystem = check(operatingSystem);
+    }
 
     /**
      * Getters or Setters
@@ -48,11 +55,19 @@ public class Laptop {
         this.brand = brand;
     }
 
-    public int getReleaseYear() {
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getReleaseYear() {
         return releaseYear;
     }
 
-    public void setReleaseYear(int releaseYear) {
+    public void setReleaseYear(String releaseYear) {
         this.releaseYear = releaseYear;
     }
 
@@ -72,13 +87,6 @@ public class Laptop {
         this.keyboardLayout = keyboardLayout;
     }
 
-    public double getScreenDiagonal() {
-        return screenDiagonal;
-    }
-
-    public void setScreenDiagonal(double screenDiagonal) {
-        this.screenDiagonal = screenDiagonal;
-    }
 
     public String getScreenResolution() {
         return screenResolution;
@@ -88,19 +96,27 @@ public class Laptop {
         this.screenResolution = screenResolution;
     }
 
-    public int getRam() {
+    public String getScreenDiagonal() {
+        return screenDiagonal;
+    }
+
+    public void setScreenDiagonal(String screenDiagonal) {
+        this.screenDiagonal = screenDiagonal;
+    }
+
+    public String getRam() {
         return ram;
     }
 
-    public void setRam(int ram) {
+    public void setRam(String ram) {
         this.ram = ram;
     }
 
-    public int getStorage() {
+    public String getStorage() {
         return storage;
     }
 
-    public void setStorage(int storage) {
+    public void setStorage(String storage) {
         this.storage = storage;
     }
 
@@ -112,19 +128,21 @@ public class Laptop {
         this.color = color;
     }
 
+    private String check(String string) {
+        return (string == null ? "Unknown" : string);
+    }
+
     @Override
     public String toString() {
-        return "Laptop{" +
-                "TYPE='" + TYPE + '\'' +
-                ", brand='" + brand + '\'' +
-                ", releaseYear=" + releaseYear +
-                ", operatingSystem='" + operatingSystem + '\'' +
-                ", keyboardLayout='" + keyboardLayout + '\'' +
-                ", screenDiagonal=" + screenDiagonal +
-                ", screenResolution='" + screenResolution + '\'' +
-                ", ram=" + ram +
-                ", storage=" + storage +
-                ", color='" + color + '\'' +
-                '}';
+        return "Brand='" + check(brand) + "', " +
+                "Model='" + check(model) + "', " +
+                "ReleaseYear=" + check(releaseYear) + ", " +
+                "OperatingSystem='" + check(operatingSystem) + "', " +
+                "KeyboardLayout='" + check(keyboardLayout) + "' " +
+                "ScreenDiagonal=" + check(screenDiagonal) + ", " +
+                "screenResolution='" + check(screenResolution) + "', " +
+                "ram=" + check(ram) + ", " +
+                "storage=" + check(storage) + ", " +
+                "color='" + check(color) + '\'';
     }
 }

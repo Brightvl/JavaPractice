@@ -7,7 +7,6 @@ import lesson_6.tools.filter.Filter;
 import java.util.HashSet;
 import java.util.Set;
 
-import static lesson_1.seminar_1.Task_1.scanner;
 import static lesson_6.tools.filter.FilterInfo.infoFilterLaptop;
 
 public class FilterOperatingSystem extends Filter {
@@ -48,6 +47,7 @@ public class FilterOperatingSystem extends Filter {
 
         } else {
             osSelected = false;
+            osName = "";
             allSetOs.clear();
             setOs.clear();
         }
