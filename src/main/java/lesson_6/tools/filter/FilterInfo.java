@@ -2,10 +2,12 @@ package lesson_6.tools.filter;
 
 
 import static lesson_6.tools.filter.сategoriesLaptop.FilterBrand.*;
+import static lesson_6.tools.filter.сategoriesLaptop.FilterCategory.*;
 import static lesson_6.tools.filter.сategoriesLaptop.FilterOperatingSystem.*;
-import static lesson_6.tools.filter.сategoriesLaptop.FilterReleaseYear.*;
+
 
 public class FilterInfo extends Filter {
+
 
     /**
      * Для отображения информации в меню фильтра
@@ -15,8 +17,8 @@ public class FilterInfo extends Filter {
                 (brandSelected ? "☑" : "☐") + " 1. Brand (" + brandName + ")\n" +
                 (!allSetBrands.isEmpty() ? "Write the desired filter to the console\n" + allSetBrands.toString() + '\n' : "") +
 
-                (releaseYearSelected ? "☑" : "☐") + " 2. Release year (" + releaseYear + ")\n" +
-                (!allSetYear.isEmpty() ? "Write the desired filter to the console\n" + allSetYear.toString() + '\n' : "") +
+                (CategoryFilterStatus ? "☑" : "☐") + " 2. Category (" + CategoryRequest + ")\n" +
+                (!allSetCategory.isEmpty() ? "Write the desired filter to the console\n" + allSetCategory.toString() + '\n' : "") +
 
                 (osSelected ? "☑" : "☐") + " 3. OS (" + osName + ")\n" +
                 (!allSetOs.isEmpty() ? "Write the desired filter to the console\n" + allSetOs.toString() + '\n' : "") +

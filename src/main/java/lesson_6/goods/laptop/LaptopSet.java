@@ -12,6 +12,10 @@ public class LaptopSet {
 
     public static Set<Laptop> laptopSet = new HashSet<>();
 
+    /**
+     * Заполняет множество laptopSet из файла CSV
+     * @param pathFile
+     */
     public static void fillLaptopSetFromCSV(String pathFile) {
         String line;
         String csvSplitBy = ",";

@@ -14,13 +14,13 @@ public class FilterBrand {
     public static String brandName = "";
 
     /**
-     * Все виды брендов
+     * Хранит в себе все допустимые виды брендов
      */
     public static Set<String> allSetBrands = new HashSet<>();
     /**
-     * Множество содержащее совпадение по брендам
+     * Содержит в себе совпадающие позиции брендов по фильтру
      */
-    private static Set<Laptop> setBrands = new HashSet<>();
+    public static Set<Laptop> setBrands = new HashSet<>();
 
     /**
      * Вывод в консоль дополнительной информации о фильтре брендов
@@ -60,7 +60,7 @@ public class FilterBrand {
             for (Laptop element : laptopSet
             ) {
                 try {
-                    if (element.getOperatingSystem().equalsIgnoreCase(brandName))
+                    if (element.getBrand().equalsIgnoreCase(brandName))
                         setBrands.add(element);
                 } catch (NullPointerException e) {
                 }

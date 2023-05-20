@@ -8,6 +8,7 @@ import java.util.Set;
 
 import static lesson_6.tools.filter.FilterInfo.infoFilterLaptop;
 import static lesson_6.tools.filter.сategoriesLaptop.FilterBrand.*;
+import static lesson_6.tools.filter.сategoriesLaptop.FilterCategory.*;
 import static lesson_6.tools.filter.сategoriesLaptop.FilterOperatingSystem.*;
 import static lesson_6.tools.filter.сategoriesLaptop.FilterReleaseYear.*;
 
@@ -29,17 +30,9 @@ public class Filter {
         while (flag) {
             String choice = scanner.nextLine();
             switch (choice) {
-                case "1" -> {
-                    switchingBrandsSelected(laptopSet);
-                }
-                case "2" -> {
-                    switchingYearSelected(laptopSet);
-
-                }
-                //Фильтр по операционке
-                case "3" -> {
-                    switchingOsSelected(laptopSet);
-                }
+                case "1" -> switchingBrandsSelected(laptopSet);
+                case "2" -> switchingCategorySelected(laptopSet);
+                case "3" -> switchingOsSelected(laptopSet);
                 case "4" -> {
 
                     flag = false;
@@ -64,36 +57,43 @@ public class Filter {
 
     private static void showSelectedFilterValues(Set<Laptop> laptopSet) {
 
-        Set<Laptop> result = new HashSet<>();
+        Set<Laptop> result = new HashSet<>(laptopSet);
+        Set<Laptop> temp = new HashSet<>();
+
         if (brandSelected) {
-            for (Laptop laptop : laptopSet
+            for (Laptop laptop : result
             ) {
-                if (laptop.getBrand().equalsIgnoreCase(brandName)) {
-                    result.add(laptop);
-                }
+                if (laptop.getBrand().equalsIgnoreCase(brandName)) temp.add(laptop);
             }
+            result.retainAll(temp);
+            temp.clear();
         }
-        if (releaseYearSelected) {
-            for (Laptop laptop : laptopSet
+        if (CategoryFilterStatus) {
+            for (Laptop laptop : result
             ) {
-                if (laptop.getReleaseYear().equalsIgnoreCase(releaseYear)) {
-                    result.add(laptop);
-                }
+                if (laptop.getCategory().equalsIgnoreCase(CategoryRequest)) temp.add(laptop);
             }
-        }
-        if (osSelected) {
-            for (Laptop laptop : laptopSet
-            ) {
-                if (laptop.getOperatingSystem().equalsIgnoreCase(osName)) {
-                    result.add(laptop);
-                }
-            }
+            result.retainAll(temp);
+            temp.clear();
         }
 
-        int i = 1;
-        for (Laptop out : result
-        ) {
-            System.out.println(i++ +". " + out);
+        if (osSelected) {
+            for (Laptop laptop : result
+            ) {
+                if (laptop.getOperatingSystem().equalsIgnoreCase(osName)) temp.add(laptop);
+            }
+            result.retainAll(temp);
+            temp.clear();
+        }
+
+        if (result.equals(laptopSet)) {
+            System.out.println("Вы не выбрали фильтр");
+        } else {
+            int i = 1;
+            for (Laptop out : result
+            ) {
+                System.out.println(i++ + ". " + out);
+            }
         }
 
 
