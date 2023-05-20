@@ -1,6 +1,6 @@
-package lesson_6.tools.filter.category;
+package lesson_6.tools.filter.сategoriesLaptop;
 
-import lesson_6.goods.Laptop;
+import lesson_6.goods.laptop.Laptop;
 
 import java.util.HashSet;
 import java.util.Set;

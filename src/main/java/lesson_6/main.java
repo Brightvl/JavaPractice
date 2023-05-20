@@ -1,7 +1,7 @@
 package lesson_6;
 
-import static lesson_6.goods.LaptopSet.fillLaptopSet;
-import static lesson_6.goods.LaptopSet.laptopSet;
+import static lesson_6.goods.laptop.LaptopSet.fillLaptopSetFromCSV;
+import static lesson_6.goods.laptop.LaptopSet.laptopSet;
 import static lesson_6.tools.filter.Filter.addFilter;
 
 
@@ -19,8 +19,11 @@ import static lesson_6.tools.filter.Filter.addFilter;
  */
 public class main {
 
+    private static String path = "src/main/java/lesson_6/goods/laptop/csvFiles/laptops.csv";
+
     public static void main(String[] args) {
-        fillLaptopSet();
+
+        fillLaptopSetFromCSV(path);
         addFilter(laptopSet);
 
     }

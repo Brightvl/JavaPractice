@@ -1,15 +1,15 @@
 package lesson_6.tools.filter;
 
-import lesson_6.goods.Laptop;
+import lesson_6.goods.laptop.Laptop;
 
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
 import static lesson_6.tools.filter.FilterInfo.infoFilterLaptop;
-import static lesson_6.tools.filter.category.FilterBrand.*;
-import static lesson_6.tools.filter.category.FilterOperatingSystem.*;
-import static lesson_6.tools.filter.category.FilterReleaseYear.*;
+import static lesson_6.tools.filter.сategoriesLaptop.FilterBrand.*;
+import static lesson_6.tools.filter.сategoriesLaptop.FilterOperatingSystem.*;
+import static lesson_6.tools.filter.сategoriesLaptop.FilterReleaseYear.*;
 
 
 public class Filter {
@@ -63,6 +63,7 @@ public class Filter {
     }
 
     private static void showSelectedFilterValues(Set<Laptop> laptopSet) {
+
         Set<Laptop> result = new HashSet<>();
         if (brandSelected) {
             for (Laptop laptop : laptopSet
