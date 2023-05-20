@@ -5,6 +5,7 @@ import lesson_6.goods.Laptop;
 import java.util.HashSet;
 import java.util.Set;
 
+import static lesson_6.goods.LaptopSet.laptopSet;
 import static lesson_6.tools.filter.Filter.addFilter;
 
 
@@ -21,16 +22,6 @@ import static lesson_6.tools.filter.Filter.addFilter;
  * • Отфильтровать ноутбуки их первоначального множества и вывести проходящие по условиям.
  */
 public class main {
-
-
-    private static Set<Laptop> laptopSet = new HashSet<>() {
-        {
-            add(new Laptop("ASUS", 2021, 15.6,"Windows"));
-            add(new Laptop("ASUS VivoBook", 2021, 14,"Unknown"));
-
-        }
-    };
-
 
     public static void main(String[] args) {
         addFilter(laptopSet);

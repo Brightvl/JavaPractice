@@ -10,6 +10,10 @@ public class CheckFilters extends Filter {
 
     protected static Set<Laptop> newSetLaptop = new HashSet<>();
 
+    /**
+     *
+     * @param laptopSet
+     */
     protected static void filtersCheck(Set<Laptop> laptopSet) {
 
         for (Laptop element : newSetLaptop) {
