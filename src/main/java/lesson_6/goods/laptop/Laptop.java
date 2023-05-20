@@ -2,12 +2,11 @@ package lesson_6.goods.laptop;
 
 public class Laptop {
 
-    //Процессор,Дискретная видеокарта,Встроенная видеокарта,Оперативная память,SSD,HDD,Экран,Операционная система,Ссылка
     /**
      * Classification
      */
     private final String TYPE = "Laptop";
-    private String brand; //Производитель
+    private String manufacture; //Производитель
     private String model; //Модель
     private String category; // Категория
     private String screenSize;
@@ -23,7 +22,6 @@ public class Laptop {
     private String releaseYear; //Год выпуска
 
 
-
     /**
      * empty constructor
      */
@@ -31,30 +29,8 @@ public class Laptop {
     }
 
 
-    public Laptop(String model, String releaseYear, String screenDiagonal, String operatingSystem) {
-        this.brand = model;
-        this.releaseYear = releaseYear;
-        this.screenSize = screenDiagonal;
-        this.operatingSystem = operatingSystem;
-    }
-
-    public Laptop(String brand, String model, String releaseYear) {
-        this.brand = brand;
-        this.model = model;
-        this.releaseYear = releaseYear;
-        this.operatingSystem = check(operatingSystem);
-    }
-
-    public Laptop(String brand, String model, String price, String releaseYear, String operatingSystem) {
-        this.brand = brand;
-        this.model = model;
-        this.price = price;
-        this.releaseYear = releaseYear;
-        this.operatingSystem = operatingSystem;
-    }
-
     public Laptop(String brand, String model, String category, String screenSize, String screen, String cpu, String ram, String storage, String gpu, String operatingSystem, String operatingSystemVersion, String weight, String price) {
-        this.brand = brand;
+        this.manufacture = brand;
         this.model = model;
         this.category = category;
         this.screenSize = screenSize;
@@ -73,12 +49,12 @@ public class Laptop {
         return TYPE;
     }
 
-    public String getBrand() {
-        return brand;
+    public String getManufacture() {
+        return manufacture;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void setManufacture(String manufacture) {
+        this.manufacture = manufacture;
     }
 
     public String getModel() {
@@ -190,17 +166,10 @@ public class Laptop {
      */
 
 
-
-
-    private String check(String string) {
-        return (string == null ? "Unknown" : string);
-    }
-
-
     @Override
     public String toString() {
         return "Laptop{" +
-                "brand='" + brand + '\'' +
+                "manufacture='" + manufacture + '\'' +
                 ", model='" + model + '\'' +
                 ", category='" + category + '\'' +
                 ", screenSize='" + screenSize + '\'' +
@@ -216,4 +185,7 @@ public class Laptop {
                 ", releaseYear='" + releaseYear + '\'' +
                 '}';
     }
+
+
+
 }

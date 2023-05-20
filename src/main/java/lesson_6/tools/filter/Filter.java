@@ -6,18 +6,16 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-import static lesson_6.tools.filter.FilterInfo.infoFilterLaptop;
-import static lesson_6.tools.filter.сategoriesLaptop.FilterBrand.*;
+import static lesson_6.tools.filter.FilterInfo.viewFilterInfo;
+import static lesson_6.tools.filter.сategoriesLaptop.FilterManufacture.*;
 import static lesson_6.tools.filter.сategoriesLaptop.FilterCategory.*;
-import static lesson_6.tools.filter.сategoriesLaptop.FilterOperatingSystem.*;
-import static lesson_6.tools.filter.сategoriesLaptop.FilterReleaseYear.*;
+import static lesson_6.tools.filter.сategoriesLaptop.FilterOS.*;
+import static lesson_6.tools.filter.сategoriesLaptop.FilterScreenSize.*;
 
 
 public class Filter {
 
     public static Scanner scanner = new Scanner(System.in);
-    private static Set<Laptop> filterSet = new HashSet<>();
-
 
     /**
      * Выбор фильтра
@@ -26,14 +24,15 @@ public class Filter {
      */
     private static void selectFilter(Set<Laptop> laptopSet) {
         boolean flag = true;
-        infoFilterLaptop();
+        viewFilterInfo();
         while (flag) {
             String choice = scanner.nextLine();
             switch (choice) {
-                case "1" -> switchingBrandsSelected(laptopSet);
-                case "2" -> switchingCategorySelected(laptopSet);
-                case "3" -> switchingOsSelected(laptopSet);
-                case "4" -> {
+                case "1" -> switchManufactureFilter(laptopSet);
+                case "2" -> switchCategoryFilter(laptopSet);
+                case "3" -> switchScreenSizeFilter(laptopSet);
+                case "4" -> switchOsFilter(laptopSet);
+                case "5" -> {
 
                     flag = false;
                 }
@@ -42,45 +41,65 @@ public class Filter {
                 }
 
             }
-            infoFilterLaptop();
+            viewFilterInfo();
         }
-
     }
 
 
+    /**
+     * @param laptopSet
+     */
     public static void addFilter(Set<Laptop> laptopSet) {
         selectFilter(laptopSet);
         showSelectedFilterValues(laptopSet);
-
-
     }
+
+//    private static void filterSet(Set<Laptop> resutSet,Set<Laptop> tempSet, String request, String one) {
+//        if (manufactureFilterStatus) {
+//            for (Laptop laptop : resutSet
+//            ) {
+//                if (one.equalsIgnoreCase(request)) tempSet.add(laptop);
+//            }
+//            resutSet.retainAll(tempSet);
+//            tempSet.clear();
+//        }
+//    }
 
     private static void showSelectedFilterValues(Set<Laptop> laptopSet) {
 
         Set<Laptop> result = new HashSet<>(laptopSet);
         Set<Laptop> temp = new HashSet<>();
 
-        if (brandSelected) {
+
+        if (manufactureFilterStatus) {
             for (Laptop laptop : result
             ) {
-                if (laptop.getBrand().equalsIgnoreCase(brandName)) temp.add(laptop);
+                if (laptop.getManufacture().equalsIgnoreCase(manufacturerRequest)) temp.add(laptop);
             }
             result.retainAll(temp);
             temp.clear();
         }
-        if (CategoryFilterStatus) {
+        if (categoryFilterStatus) {
             for (Laptop laptop : result
             ) {
-                if (laptop.getCategory().equalsIgnoreCase(CategoryRequest)) temp.add(laptop);
+                if (laptop.getCategory().equalsIgnoreCase(categoryRequest)) temp.add(laptop);
+            }
+            result.retainAll(temp);
+            temp.clear();
+        }
+        if (screenSizeFilterStatus) {
+            for (Laptop laptop : result
+            ) {
+                if (laptop.getScreenSize().equalsIgnoreCase(screenSizeRequest)) temp.add(laptop);
             }
             result.retainAll(temp);
             temp.clear();
         }
 
-        if (osSelected) {
+        if (osFilterStatus) {
             for (Laptop laptop : result
             ) {
-                if (laptop.getOperatingSystem().equalsIgnoreCase(osName)) temp.add(laptop);
+                if (laptop.getOperatingSystem().equalsIgnoreCase(osRequest)) temp.add(laptop);
             }
             result.retainAll(temp);
             temp.clear();

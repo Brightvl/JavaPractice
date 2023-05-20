@@ -1,9 +1,10 @@
 package lesson_6.tools.filter;
 
 
-import static lesson_6.tools.filter.сategoriesLaptop.FilterBrand.*;
+import static lesson_6.tools.filter.сategoriesLaptop.FilterManufacture.*;
 import static lesson_6.tools.filter.сategoriesLaptop.FilterCategory.*;
-import static lesson_6.tools.filter.сategoriesLaptop.FilterOperatingSystem.*;
+import static lesson_6.tools.filter.сategoriesLaptop.FilterOS.*;
+import static lesson_6.tools.filter.сategoriesLaptop.FilterScreenSize.*;
 
 
 public class FilterInfo extends Filter {
@@ -12,19 +13,22 @@ public class FilterInfo extends Filter {
     /**
      * Для отображения информации в меню фильтра
      */
-    public static void infoFilterLaptop() {
+    public static void viewFilterInfo() {
         System.out.println("Select number filter\n" +
-                (brandSelected ? "☑" : "☐") + " 1. Brand (" + brandName + ")\n" +
-                (!allSetBrands.isEmpty() ? "Write the desired filter to the console\n" + allSetBrands.toString() + '\n' : "") +
 
-                (CategoryFilterStatus ? "☑" : "☐") + " 2. Category (" + CategoryRequest + ")\n" +
-                (!allSetCategory.isEmpty() ? "Write the desired filter to the console\n" + allSetCategory.toString() + '\n' : "") +
+                (manufactureFilterStatus ? "☑" : "☐") + " 1. Manufacturer (" + manufacturerRequest + ")\n" +
+                (!manufacturerSetString.isEmpty() ? "Write the desired filter to the console\n" + manufacturerSetString.toString() + '\n' : "") +
 
-                (osSelected ? "☑" : "☐") + " 3. OS (" + osName + ")\n" +
-                (!allSetOs.isEmpty() ? "Write the desired filter to the console\n" + allSetOs.toString() + '\n' : "") +
-                "✖ 4. Confirm!" +
+                (categoryFilterStatus ? "☑" : "☐") + " 2. Category (" + categoryRequest + ")\n" +
+                (!categorySetString.isEmpty() ? "Write the desired filter to the console\n" + categorySetString.toString() + '\n' : "") +
 
-                "");
+                (screenSizeFilterStatus ? "☑" : "☐") + " 3. ScreenSize (" + screenSizeRequest + ")\n" +
+                (!screenSizeSetString.isEmpty() ? "Write the desired filter to the console\n" + screenSizeSetString.toString() + '\n' : "") +
+
+                (osFilterStatus ? "☑" : "☐") + " 4. OS (" + osRequest + ")\n" +
+                (!osSetString.isEmpty() ? "Write the desired filter to the console\n" + osSetString.toString() + '\n' : "") +
+
+                "✖ 5. Confirm!");
 
     }
 }

@@ -6,68 +6,78 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static lesson_6.tools.filter.Filter.scanner;
-import static lesson_6.tools.filter.FilterInfo.infoFilterLaptop;
+import static lesson_6.tools.filter.FilterInfo.viewFilterInfo;
 
 public class FilterCategory {
-
-    public static boolean CategoryFilterStatus = false; // Статус фильтра активен или нет
-    public static String CategoryRequest = ""; //Запрос переданный фильтру
+    /**
+     * Содержит в себе состояние фильтра category
+     */
+    public static boolean categoryFilterStatus = false;
+    /**
+     * Выбранный пользователем параметр в фильтре
+     */
+    public static String categoryRequest = "";
 
     /**
-     * Хранит в себе доступные категории
+     * Переменная для отображения пользователю доступных данных в фильтре
      */
-    public static Set<String> allSetCategory = new HashSet<>();
+    public static Set<String> categorySetString = new HashSet<>();
     /**
-     * Содержит в себе совпадающие позиции категорий по фильтру
+     * Переменная хранит в себе удовлетворяющие фильтру объекты класса Laptop
      */
-    public static Set<Laptop> setCategory = new HashSet<>();
+    public static Set<Laptop> categorySetLaptop = new HashSet<>();
+
+    /**
+     * Переключатель фильтра категория.
+     * Если True заполняем categorySetString для вывода на экран информации о
+     * доступных фильтрах типа category. Пользователь выбирает фильтр и пишет в консоль.
+     * Значение выбранного фильтра сохраняется в переменную categoryRequest
+     * В categorySetLaptop добавляются значения класса Laptop удовлетворяющие выбранному фильтру.
+     * Если переключатель False стираются все данные.
+     * @param laptopSet множество с данными о ноутбуках
+     */
+    public static void switchCategoryFilter(Set<Laptop> laptopSet) {
+        if (!categoryFilterStatus) {
+            categoryFilterStatus = true;
+            addCategorySetStringFilter(laptopSet);
+            viewFilterInfo();
+            System.out.println("Enter one of the suggested filters");
+            categoryRequest = scanner.nextLine();
+            addCategorySetLaptopFilter(laptopSet);
+            categorySetString.clear();
+
+        } else {
+            categoryFilterStatus = false;
+            categoryRequest = "";
+            categorySetString.clear();
+            categorySetLaptop.clear();
+        }
+    }
 
     /**
      * Вывод в консоль дополнительной информации о категориях
-     * Заполняет allSetCategory для дальнейшего вывода его на экран для пользователя
+     * Заполняет categorySetString для дальнейшего вывода его на экран для пользователя
      */
-    private static void displayFiltersCategory(Set<Laptop> laptopSet) {
+    private static void addCategorySetStringFilter(Set<Laptop> laptopSet) {
         for (Laptop laptop : laptopSet) {
-            allSetCategory.add(laptop.getCategory());
+            categorySetString.add(laptop.getCategory());
         }
     }
 
     /**
-     * Переключатель для фильтра
+     * Заполняет categorySetLaptop значениями класса Laptop удовлетворяющие выбранному фильтру.
      */
-    public static void switchingCategorySelected(Set<Laptop> laptopSet) {
-        if (!CategoryFilterStatus) {
-            CategoryFilterStatus = true;
-            displayFiltersCategory(laptopSet); // отобразил на экран по фильтру
-            infoFilterLaptop();
-            System.out.println("Введите один из предложенных фильтров");
-            CategoryRequest = scanner.nextLine();
-            addCategoryFilter(laptopSet);
-            allSetCategory.clear();
-
-        } else {
-            CategoryFilterStatus = false;
-            CategoryRequest = "";
-            allSetCategory.clear();
-            setCategory.clear();
-        }
-    }
-
-    /**
-     * Добавляет значения в множество с операционными системами, если фильтр включен
-     */
-    private static void addCategoryFilter(Set<Laptop> laptopSet) {
-        if (CategoryFilterStatus) {
+    private static void addCategorySetLaptopFilter(Set<Laptop> laptopSet) {
+        if (categoryFilterStatus) {
             for (Laptop element : laptopSet
             ) {
-                try {
-                    if (element.getCategory().equalsIgnoreCase(CategoryRequest))
-                        setCategory.add(element);
-                } catch (NullPointerException e) {
-                }
+                if (element.getCategory().equalsIgnoreCase(categoryRequest))
+                    categorySetLaptop.add(element);
             }
         }
     }
-
-
 }
+
+
+
+
