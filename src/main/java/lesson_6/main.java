@@ -25,8 +25,8 @@ public class main {
 
     private static Set<Laptop> laptopSet = new HashSet<>() {
         {
-            add(new Laptop("ASUS", 2021, 15.6));
-            add(new Laptop("ASUS VivoBook", 2021, 14));
+            add(new Laptop("ASUS", 2021, 15.6,"Windows"));
+            add(new Laptop("ASUS VivoBook", 2021, 14,"Unknown"));
 
         }
     };

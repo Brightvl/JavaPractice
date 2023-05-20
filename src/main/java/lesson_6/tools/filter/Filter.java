@@ -4,6 +4,11 @@ import lesson_6.goods.Laptop;
 
 import java.util.*;
 
+import static lesson_6.tools.filter.CheckFilters.filtersCheck;
+import static lesson_6.tools.filter.CheckFilters.newSetLaptop;
+import static lesson_6.tools.filter.FilterOperatingSystem.filterOsSelection;
+import static lesson_6.tools.filter.FilterOperatingSystem.osSelected;
+
 
 public class Filter {
 
@@ -26,7 +31,7 @@ public class Filter {
         System.out.println("Select number filter\n" +
                 (brandSelected ? "\u2611" : "\u2610") + " 1. Brand (" + brandName + ")\n" +
                 (releaseYearSelected ? "\u2611" : "\u2610") + " 2. ReleaseYear (" + releaseYear + ")\n" +
-                "\u2716 3. Confirm!");
+                "\u2716 4. Confirm!");
 
     }
 
@@ -37,51 +42,58 @@ public class Filter {
         Scanner scanner = new Scanner(System.in);
         while (flag) {
 
-                String choice = scanner.nextLine();
-                switch (choice) {
-                    case "1" -> {
-                        brandSelected = !brandSelected;
-                        if (brandSelected) {
-                            System.out.print("Enter brand name -> ");
-                            brandName = scanner.nextLine();
-                        } else {
-                            System.out.println("Filter deleted");
-                        }
-                    }
-                    case "2" -> {
-                        releaseYearSelected = !releaseYearSelected;
-                        if (releaseYearSelected) {
-                            System.out.print("Enter release year -> ");
-                            try {
-                                releaseYear = scanner.nextInt();
-                            } catch (InputMismatchException e) {
-                                System.out.println("вы не ввели число");
-                                releaseYearSelected = !releaseYearSelected;
-                            }
-
-                        } else {
-                            System.out.println("Filter deleted");
-                        }
-                    }
-                    case "3" -> {
-                        flag = false;
-                    }
-                    default -> {
-                        System.out.println("Введите корректное значение");
+            String choice = scanner.nextLine();
+            switch (choice) {
+                case "1" -> {
+                    brandSelected = !brandSelected;
+                    if (brandSelected) {
+                        System.out.print("Enter brand name -> ");
+                        brandName = scanner.nextLine();
+                    } else {
+                        System.out.println("Filter deleted");
                     }
                 }
+                case "2" -> {
+                    releaseYearSelected = !releaseYearSelected;
+                    if (releaseYearSelected) {
+                        System.out.print("Enter release year -> ");
+                        try {
+                            releaseYear = scanner.nextInt();
+                        } catch (InputMismatchException e) {
+                            System.out.println("вы не ввели число");
+                            releaseYearSelected = !releaseYearSelected;
+                        }
+
+                    } else {
+                        System.out.println("Filter deleted");
+                    }
+                }
+                case "3" -> {
+                    if (!osSelected) {
+                        System.out.print("Enter operating system name -> ");
+                        filterOsSelection(scanner.nextLine());
+                    } else {
+                        filterOsSelection("");
+                    }
+
+
+                }
+                case "4" -> {
+                    flag = false;
+                }
+                default -> {
+                    System.out.println("Введите корректное значение");
+                }
+            }
             info();
         }
         scanner.close();
     }
 
-    public static Laptop addFilter(Set<Laptop> one) {
+    public static void addFilter(Set<Laptop> laptopSet) {
         selectFilter();
-        Laptop result = new Laptop();
+        filtersCheck(laptopSet);
 
-
-        return result;
+        }
     }
 
-
-}

@@ -28,10 +28,11 @@ public class Laptop {
     }
 
 
-    public Laptop(String model, int releaseYear, double screenDiagonal) {
+    public Laptop(String model, int releaseYear, double screenDiagonal,String operatingSystem) {
         this.brand = model;
         this.releaseYear = releaseYear;
         this.screenDiagonal = screenDiagonal;
+        this.operatingSystem = operatingSystem;
     }
 
 
@@ -109,5 +110,21 @@ public class Laptop {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    @Override
+    public String toString() {
+        return "Laptop{" +
+                "TYPE='" + TYPE + '\'' +
+                ", brand='" + brand + '\'' +
+                ", releaseYear=" + releaseYear +
+                ", operatingSystem='" + operatingSystem + '\'' +
+                ", keyboardLayout='" + keyboardLayout + '\'' +
+                ", screenDiagonal=" + screenDiagonal +
+                ", screenResolution='" + screenResolution + '\'' +
+                ", ram=" + ram +
+                ", storage=" + storage +
+                ", color='" + color + '\'' +
+                '}';
     }
 }
