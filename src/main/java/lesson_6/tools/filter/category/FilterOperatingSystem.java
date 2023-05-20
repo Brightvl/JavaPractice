@@ -3,7 +3,6 @@ package lesson_6.tools.filter.category;
 import lesson_6.goods.Laptop;
 import lesson_6.tools.filter.Filter;
 
-
 import java.util.HashSet;
 import java.util.Set;
 

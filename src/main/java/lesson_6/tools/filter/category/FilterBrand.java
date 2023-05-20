@@ -24,6 +24,7 @@ public class FilterBrand {
 
     /**
      * Вывод в консоль дополнительной информации о фильтре брендов
+     *
      * @param laptopSet
      */
     public static void displayFiltersBrands(Set<Laptop> laptopSet) {

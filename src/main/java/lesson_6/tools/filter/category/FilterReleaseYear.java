@@ -7,7 +7,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static lesson_6.tools.filter.FilterInfo.infoFilterLaptop;
-import static lesson_6.tools.filter.category.FilterBrand.brandSelected;
 
 public class FilterReleaseYear extends Filter {
 
