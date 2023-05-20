@@ -2,14 +2,16 @@ package lesson_6.goods;
 
 public class Laptop {
 
+    //Процессор,Дискретная видеокарта,Встроенная видеокарта,Оперативная память,SSD,HDD,Экран,Операционная система,Ссылка
     /**
      * Classification
      */
     private final String TYPE = "Laptop";
-    private String brand;
-    private String model;
-    private String releaseYear;
-    private String operatingSystem;
+    private String brand; //Производитель
+    private String model; //Модель
+    private String price; // Цена
+    private String releaseYear; //Год выпуска
+    private String operatingSystem; // Операционная система
 
     /**
      * Additionally info
@@ -41,6 +43,14 @@ public class Laptop {
         this.model = model;
         this.releaseYear = releaseYear;
         this.operatingSystem = check(operatingSystem);
+    }
+
+    public Laptop(String brand, String model, String price, String releaseYear, String operatingSystem) {
+        this.brand = brand;
+        this.model = model;
+        this.price = price;
+        this.releaseYear = releaseYear;
+        this.operatingSystem = operatingSystem;
     }
 
     /**

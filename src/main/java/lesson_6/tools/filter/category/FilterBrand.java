@@ -20,14 +20,12 @@ public class FilterBrand {
     /**
      * Множество содержащее совпадение по брендам
      */
-    public static Set<Laptop> setBrands = new HashSet<>();
+    private static Set<Laptop> setBrands = new HashSet<>();
 
     /**
      * Вывод в консоль дополнительной информации о фильтре брендов
-     *
-     * @param laptopSet
      */
-    public static void displayFiltersBrands(Set<Laptop> laptopSet) {
+    private static void displayFiltersBrands(Set<Laptop> laptopSet) {
         for (Laptop laptop : laptopSet) {
             allSetBrands.add(laptop.getBrand());
         }
@@ -57,7 +55,7 @@ public class FilterBrand {
     /**
      * Добавляет значения в множество с операционными системами, если фильтр включен
      */
-    protected static void addBrandsFilter(Set<Laptop> laptopSet) {
+    private static void addBrandsFilter(Set<Laptop> laptopSet) {
         if (brandSelected) {
             for (Laptop element : laptopSet
             ) {

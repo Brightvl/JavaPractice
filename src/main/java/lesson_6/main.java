@@ -1,5 +1,6 @@
 package lesson_6;
 
+import static lesson_6.goods.LaptopSet.fillLaptopSet;
 import static lesson_6.goods.LaptopSet.laptopSet;
 import static lesson_6.tools.filter.Filter.addFilter;
 
@@ -19,6 +20,7 @@ import static lesson_6.tools.filter.Filter.addFilter;
 public class main {
 
     public static void main(String[] args) {
+        fillLaptopSet();
         addFilter(laptopSet);
 
     }
