@@ -19,8 +19,11 @@ public class Task1 {
     public static void main(String[] args) {
         String str = "Россия идет вперед всей планеты. Планета — это не Россия.";
         String word = "Россия";
+
         Map<String, Integer> map = new HashMap<>();
-        String[] arr = str.replaceAll("[^a-zA-Zа-яА-Я0-9 ]", "").split(" ");
+        String[] arr = str.replaceAll("[^a-zA-Zа-яА-Я0-9 ]", "").split("\\s+");
+
+
         System.out.println(Arrays.toString(arr));
 
         for (String s : arr)
