@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static lesson_6.tools.filter.Filter.scanner;
-import static lesson_6.tools.filter.FilterInfo.viewFilterInfo;
+import static lesson_6.tools.filter.FilterView.viewFilterInfo;
 
 public class FilterScreenSize {
 
@@ -43,7 +43,7 @@ public class FilterScreenSize {
             screenSizeFilterStatus = true;
             addScreenSizeSetStringFilters(laptopSet); // отобразил на экран по фильтру
             viewFilterInfo();
-            System.out.println("Введите один из предложенных фильтров");
+            System.out.println("Enter one of the suggested filters\n" + screenSizeSetString);
             screenSizeRequest = scanner.nextLine();
             addScreenSizeSetLaptopFilter(laptopSet);
             screenSizeSetString.clear();

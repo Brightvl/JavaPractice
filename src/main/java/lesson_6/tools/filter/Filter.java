@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-import static lesson_6.tools.filter.FilterInfo.viewFilterInfo;
+import static lesson_6.tools.filter.FilterView.viewFilterInfo;
 import static lesson_6.tools.filter.сategoriesLaptop.FilterManufacture.*;
 import static lesson_6.tools.filter.сategoriesLaptop.FilterCategory.*;
 import static lesson_6.tools.filter.сategoriesLaptop.FilterOS.*;
@@ -23,26 +23,24 @@ public class Filter {
      * @param laptopSet
      */
     private static void selectFilter(Set<Laptop> laptopSet) {
-        boolean flag = true;
         viewFilterInfo();
-        while (flag) {
+        while (scanner.hasNext()) {
             String choice = scanner.nextLine();
             switch (choice) {
                 case "1" -> switchManufactureFilter(laptopSet);
                 case "2" -> switchCategoryFilter(laptopSet);
                 case "3" -> switchScreenSizeFilter(laptopSet);
                 case "4" -> switchOsFilter(laptopSet);
-                case "5" -> {
-
-                    flag = false;
-                }
                 default -> {
                     System.out.println("Введите корректное значение");
                 }
-
             }
-            viewFilterInfo();
+
+            if (choice.equalsIgnoreCase("0")) break;
+            else viewFilterInfo();
+
         }
+
     }
 
 
@@ -54,8 +52,12 @@ public class Filter {
         showSelectedFilterValues(laptopSet);
     }
 
-//    private static void filterSet(Set<Laptop> resutSet,Set<Laptop> tempSet, String request, String one) {
-//        if (manufactureFilterStatus) {
+//    private static void filterSet(boolean filterStatus,
+//                                  Set<Laptop> resutSet,
+//                                  Set<Laptop> tempSet,
+//                                  String request,
+//                                  String one) {
+//        if (filterStatus) {
 //            for (Laptop laptop : resutSet
 //            ) {
 //                if (one.equalsIgnoreCase(request)) tempSet.add(laptop);
@@ -69,6 +71,8 @@ public class Filter {
 
         Set<Laptop> result = new HashSet<>(laptopSet);
         Set<Laptop> temp = new HashSet<>();
+
+//        filterSet(manufactureFilterStatus,result,temp,manufacturerRequest);
 
 
         if (manufactureFilterStatus) {

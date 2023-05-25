@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static lesson_6.tools.filter.Filter.scanner;
-import static lesson_6.tools.filter.FilterInfo.viewFilterInfo;
+import static lesson_6.tools.filter.FilterView.viewFilterInfo;
 
 public class FilterCategory {
     /**
@@ -41,7 +41,7 @@ public class FilterCategory {
             categoryFilterStatus = true;
             addCategorySetStringFilter(laptopSet);
             viewFilterInfo();
-            System.out.println("Enter one of the suggested filters");
+            System.out.println("Enter one of the suggested filters\n"+categorySetLaptop);
             categoryRequest = scanner.nextLine();
             addCategorySetLaptopFilter(laptopSet);
             categorySetString.clear();

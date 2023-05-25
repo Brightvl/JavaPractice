@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static lesson_6.tools.filter.Filter.scanner;
-import static lesson_6.tools.filter.FilterInfo.viewFilterInfo;
+import static lesson_6.tools.filter.FilterView.viewFilterInfo;
 
 public class FilterManufacture {
 
@@ -42,9 +42,10 @@ public class FilterManufacture {
     public static void switchManufactureFilter(Set<Laptop> laptopSet) {
         if (!manufactureFilterStatus) {
             manufactureFilterStatus = true;
-            addManufactureSetStringFilter(laptopSet); // отобразил на экран по фильтру
+            addManufactureSetStringFilter(laptopSet);
             viewFilterInfo();
-            System.out.println("Введите один из предложенных фильтров");
+            System.out.println("Enter one of the suggested filters\n"+manufacturerSetString);
+
             manufacturerRequest = scanner.nextLine();
             addManufactureSetLaptopFilter(laptopSet);
             manufacturerSetString.clear();
@@ -83,5 +84,8 @@ public class FilterManufacture {
             }
         }
     }
+
+
+
 
 }

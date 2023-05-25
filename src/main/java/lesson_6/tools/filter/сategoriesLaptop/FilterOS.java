@@ -6,7 +6,7 @@ import lesson_6.tools.filter.Filter;
 import java.util.HashSet;
 import java.util.Set;
 
-import static lesson_6.tools.filter.FilterInfo.viewFilterInfo;
+import static lesson_6.tools.filter.FilterView.viewFilterInfo;
 
 public class FilterOS extends Filter {
     /**
@@ -40,9 +40,9 @@ public class FilterOS extends Filter {
     public static void switchOsFilter(Set<Laptop> laptopSet) {
         if (!osFilterStatus) {
             osFilterStatus = true;
-            addOsSetStringFilter(laptopSet); // отобразил на экран по фильтру
+            addOsSetStringFilter(laptopSet);
             viewFilterInfo();
-            System.out.println("Введите один из предложенных фильтров");
+            System.out.println("Enter one of the suggested filters\n" + osSetString);
             osRequest = scanner.nextLine();
             addOsSetLaptopFilter(laptopSet);
             osSetString.clear();
@@ -62,7 +62,7 @@ public class FilterOS extends Filter {
      *
      * @param laptopSet множество с данными о ноутбуках
      */
-    public static void addOsSetStringFilter(Set<Laptop> laptopSet) {
+    private static void addOsSetStringFilter(Set<Laptop> laptopSet) {
         for (Laptop laptop : laptopSet) {
             osSetString.add(laptop.getOperatingSystem());
         }
@@ -72,7 +72,7 @@ public class FilterOS extends Filter {
      * Заполняет screenSizeSetLaptop значениями класса Laptop
      * удовлетворяющие выбранному фильтру.
      */
-    protected static void addOsSetLaptopFilter(Set<Laptop> laptopSet) {
+    private static void addOsSetLaptopFilter(Set<Laptop> laptopSet) {
         if (osFilterStatus) {
             for (Laptop element : laptopSet
             ) {
