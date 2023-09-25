@@ -73,7 +73,7 @@ public class HW2 {
         try {
             int a = 91;
             int b = 3;
-            System.out.println((float) a / b);
+            System.out.println(a + " / " + b + " = "  + (float) a / b);
 
             printSum(23, 234);
 
@@ -87,7 +87,7 @@ public class HW2 {
     }
 
     public static void printSum(Integer a, Integer b) {
-        System.out.println(a + b);
+        System.out.println(a + " + " + b + " = " + (a + b));
     }
 
     /**
