@@ -1,13 +1,14 @@
 package JavaDevKit;
 
-import org.example.lesson_6.MontyHallGame;
+
+import JavaDevKit.lesson_6.MontyHallGame;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-import static org.example.lesson_6.MontyHallGame.NUM_TESTS;
+import static JavaDevKit.lesson_6.MontyHallGame.NUM_TESTS;
 
 public class MontyHallGameTest {
     MontyHallGame game;

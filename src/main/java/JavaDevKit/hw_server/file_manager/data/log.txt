@@ -1,0 +1,4 @@
+[22/01/24 13:44] Run server GUI
+[22/01/24 13:44] [Server] launched
+[22/01/24 13:44] [1]: verification was successful
+[22/01/24 13:44] [1] sent {Всем привет!} in general chat
